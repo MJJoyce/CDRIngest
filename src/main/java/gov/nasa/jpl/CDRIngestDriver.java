@@ -2,10 +2,16 @@ package gov.nasa.jpl;
 
 import org.apache.commons.cli.*;
 
-class CDRIngester {
+class CDRIngestDriver {
     public static void main(String args[]) throws ParseException {
         Options options = new Options();
         options.addOption("h", "help", false, "Show Help");
+        options.addOption(Option.builder("c")
+                                .longOpt("config")
+                                .hasArg()
+                                .argName("PATH")
+                                .desc("path to TitanDB Properties configuration file")
+                                .build());
 
         CommandLineParser parser = new DefaultParser();
         CommandLine cmd = null;
