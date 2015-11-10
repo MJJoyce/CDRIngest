@@ -21,7 +21,7 @@
       <configuration>
         <archive>
           <manifest>
-            <mainClass>gov.nasa.jpl.CDRIngester</mainClass>
+            <mainClass>gov.nasa.jpl.CDRIngestDriver</mainClass>
           </manifest>
         </archive>
         <descriptorRefs>
