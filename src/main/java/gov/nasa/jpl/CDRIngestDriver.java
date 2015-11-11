@@ -1,8 +1,10 @@
 package gov.nasa.jpl;
 
+import java.io.File;
+
 import org.apache.commons.cli.*;
 
-class CDRIngestDriver {
+public class CDRIngestDriver {
     public static void main(String args[]) throws ParseException {
         Options options = new Options();
         options.addOption("h", "help", false, "Show Help");
@@ -25,6 +27,16 @@ class CDRIngestDriver {
         if (cmd.hasOption("help")) {
             showHelp(options);
         }
+
+        CDRIngester ingester = null;
+
+        if (cmd.hasOption("config")) {
+            ingester = new CDRIngester(new File(cmd.getOptionValue("config")));
+        } else {
+            ingester = new CDRIngester();
+        }
+
+        ingester.ingestToCDR();
     }
 
     private static void showHelp(Options options) {
